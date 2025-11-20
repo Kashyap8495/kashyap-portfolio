@@ -38,7 +38,7 @@ export default function TechStack() {
       <h2 className='text-3xl font-bold text-accent mb-10'>
         Technologies I Use
       </h2>
-      <div className='flex gap-8 justify-items-center'>
+      <div className='flex gap-8 justify-center flex-wrap'>
         {items.map((t, i) => (
           <div
             key={i}

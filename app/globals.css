@@ -7,6 +7,9 @@
 --bg: #0b1220;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 
 body {
 background: var(--bg);

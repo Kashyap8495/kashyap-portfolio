@@ -9,15 +9,20 @@ export default function Navbar() {
 
   return (
     <nav className='fixed w-full z-40 backdrop-blur-md bg-black/30'>
-      <div className='max-w-6xl mx-auto px-6 py-4 flex items-center justify-between'>
+      <div className='max-w-7xl mx-auto px-6 py-4 flex items-center justify-between'>
         <Link
-          href='#'
-          className='flex items-center gap-3 font-extrabold text-2xl tracking-wide cursor-pointer group'
+          href='#home'
+          className='flex items-center gap-2.5 font-extrabold text-2xl tracking-wide cursor-pointer group'
         >
-          <span className='p-2 rounded-xl bg-gradient-to-br from-yellow-400 to-orange-500 text-black shadow-lg group-hover:scale-110 transition-transform'>
-            <FaBolt size={20} />
-          </span>
-          <span className='bg-gradient-to-r from-accent to-white bg-clip-text text-transparent drop-shadow-md group-hover:tracking-widest transition-all'>
+          <span
+            className='w-3 h-3 rounded-full bg-gradient-to-br from-[#9b5cff] to-[#4ba3ff]
+                  shadow-[0_0_12px_rgba(155,92,255,0.8)] group-hover:scale-125 transition-transform'
+          />
+
+          <span
+            className='bg-gradient-to-r from-[#9b5cff] to-[#4ba3ff] bg-clip-text text-transparent
+                  drop-shadow-md group-hover:tracking-widest transition-all duration-300'
+          >
             Kashyap
           </span>
         </Link>
@@ -32,6 +37,9 @@ export default function Navbar() {
           </a>
           <a href='#skills' className='hover:text-accent transition'>
             Skills
+          </a>
+          <a href='#resume' className='hover:text-accent transition'>
+            Resume
           </a>
           <a href='#technology' className='hover:text-accent transition'>
             Technology

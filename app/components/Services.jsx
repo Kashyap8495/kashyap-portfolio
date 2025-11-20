@@ -22,7 +22,10 @@ export default function Services() {
 
   return (
     <section id='services' className='mt-20 text-center scroll-mt-32'>
-      <h2 className='text-3xl font-bold mb-12 text-accent'>My Services</h2>
+      <h2 className='text-3xl font-bold text-accent'>My Services</h2>
+      <p className='mb-10 text-gray-400 mb-12'>
+        Delivering high-quality solutions tailored to your needs
+      </p>
 
       <div className='grid md:grid-cols-3 gap-6'>
         {list.map((s) => (

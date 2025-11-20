@@ -42,18 +42,23 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className='mt-10 flex gap-5'
+            className='mt-10 flex flex-col sm:flex-row justify-center md:justify-start gap-4 sm:gap-5 w-full'
           >
             <a
               href='#contact'
-              className='px-8 py-3 rounded-full bg-gradient-to-r from-[#9b5cff] to-[#4ba3ff] text-white font-medium text-lg shadow-lg hover:scale-105 transition'
+              className='px-8 py-3 rounded-full bg-gradient-to-r from-[#9b5cff] to-[#4ba3ff]
+               text-white font-medium text-lg shadow-lg
+               hover:scale-105 transition text-center'
             >
               Get in Touch →
             </a>
 
             <a
               href='#work'
-              className='px-8 py-3 rounded-full border-2 border-[#9b5cff] text-white font-medium text-lg hover:bg-white/10 transition flex items-center gap-2'
+              className='px-8 py-3 rounded-full border-2 border-[#9b5cff]
+               text-white font-medium text-lg
+               hover:bg-white/10 transition
+               flex items-center justify-center gap-2 text-center'
             >
               View My Work <FiArrowRight />
             </a>

@@ -1,27 +1,3 @@
-// 'use client'
-// import { motion } from 'framer-motion'
-// import Image from 'next/image'
-
-// export default function ProjectCard({ title, tech, img, link }) {
-//   return (
-//     <motion.a
-//       whileHover={{ scale: 1.03 }}
-//       transition={{ duration: 0.3 }}
-//       href={link}
-//       target='_blank'
-//       className='block bg-black/20 border border-white/10 rounded-xl overflow-hidden shadow-lg'
-//     >
-//       <div className='relative h-40 w-full'>
-//         <Image src={img} fill className='object-cover' alt='project' />
-//       </div>
-//       <div className='p-4 text-left'>
-//         <div className='text-accent text-sm'>{tech}</div>
-//         <div className='text-lg font-semibold mt-1'>{title}</div>
-//       </div>
-//     </motion.a>
-//   )
-// }
-
 'use client'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
@@ -41,22 +17,22 @@ export default function ProjectCard({ title, tech, img, link }) {
         <Image
           src={img}
           fill
-          className='object-cover transition-all duration-500 group-hover:blur-sm group-hover:scale-110'
           alt={title}
+          className='object-cover transition-all duration-500 group-hover:blur-sm group-hover:scale-110'
         />
       </div>
 
-      {/* Strong Gradient Overlay for visibility */}
+      {/* DESKTOP: Hover Gradient Overlay */}
       <div
-        className='absolute inset-0
+        className='absolute inset-0 hidden md:block
         bg-gradient-to-b from-black/70 via-black/80 to-black/90
         opacity-0 group-hover:opacity-100
         transition-all duration-500'
       ></div>
 
-      {/* Hover Content */}
+      {/* DESKTOP: Hover Content */}
       <div
-        className='absolute inset-0 flex flex-col items-center justify-center
+        className='absolute inset-0 hidden md:flex flex-col items-center justify-center
         opacity-0 group-hover:opacity-100
         transition-all duration-500 p-4 text-center'
       >
@@ -64,6 +40,20 @@ export default function ProjectCard({ title, tech, img, link }) {
           {title}
         </h3>
         <p className='text-sm text-accent mt-2 font-medium drop-shadow-xl'>
+          {tech}
+        </p>
+      </div>
+
+      {/* MOBILE: Always-visible glass blur background */}
+      <div
+        className='absolute bottom-0 left-0 right-0 md:hidden
+  p-4 backdrop-blur-lg bg-black/60
+  flex flex-col items-start justify-end'
+      >
+        <h3 className='text-base font-semibold text-white drop-shadow-xl'>
+          {title}
+        </h3>
+        <p className='text-xs text-accent mt-1 font-medium drop-shadow-xl'>
           {tech}
         </p>
       </div>

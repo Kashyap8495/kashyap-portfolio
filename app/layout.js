@@ -13,10 +13,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang='en'>
       <body
-        className={`${inter.className} bg-deep text-gray-100 scroll-smooth`}
+        className={`${inter.className} bg-deep text-gray-100 scroll-smooth overflow-x-hidden`}
       >
         <Navbar />
-        {children}
+        <main>{children}</main>
       </body>
     </html>
   )

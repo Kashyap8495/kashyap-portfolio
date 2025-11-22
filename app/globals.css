@@ -15,3 +15,7 @@ body {
 background: var(--bg);
 color: #fff;
 }
+
+html, body {
+  overflow-x: hidden; /* prevent horizontal scroll */
+}

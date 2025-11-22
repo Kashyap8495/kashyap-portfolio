@@ -2,7 +2,7 @@ import { FaInstagram, FaGithub, FaLinkedin } from 'react-icons/fa'
 
 export default function Footer() {
   return (
-    <footer className='py-16 bg-[#0B0F17] text-gray-300 border-t border-white/10'>
+    <footer className='pt-16 bg-[#0B0F17] text-gray-300 border-t border-white/10'>
       <div className='max-w-7xl mx-auto grid md:grid-cols-3 gap-12 px-6'>
         {/* Brand Section */}
         <div>
@@ -113,7 +113,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className='border-t border-white/10 mt-12 pt-6'>
+      <div className='border-t border-white/10 mt-12 py-6'>
         <p className='text-center text-sm text-gray-500'>
           © {new Date().getFullYear()} Kashyap Patel. All rights reserved.
         </p>

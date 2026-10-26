@@ -1,62 +1,79 @@
-'use client'
-import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { FiArrowRight, FiExternalLink } from 'react-icons/fi'
 
-export default function ProjectCard({ title, tech, img, link }) {
+function techSummary(technologies = []) {
+  return technologies.slice(0, 5).join(' · ')
+}
+
+export default function ProjectCard({ project, onSelect }) {
   return (
-    <motion.a
-      href={link}
-      target='_blank'
-      className='group block relative rounded-xl overflow-hidden border border-white/10 bg-black/20 shadow-lg'
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      {/* Image */}
-      <div className='relative h-56 w-full'>
-        <Image
-          src={img}
-          fill
-          alt={title}
-          className='object-cover transition-all duration-500 group-hover:blur-sm group-hover:scale-110'
-        />
-      </div>
-
-      {/* DESKTOP: Hover Gradient Overlay */}
-      <div
-        className='absolute inset-0 hidden md:block
-        bg-gradient-to-b from-black/70 via-black/80 to-black/90
-        opacity-0 group-hover:opacity-100
-        transition-all duration-500'
-      ></div>
-
-      {/* DESKTOP: Hover Content */}
-      <div
-        className='absolute inset-0 hidden md:flex flex-col items-center justify-center
-        opacity-0 group-hover:opacity-100
-        transition-all duration-500 p-4 text-center'
+    <article className='group flex h-full flex-col border border-line bg-surface transition duration-300 hover:bg-surface-hover'>
+      <button
+        type='button'
+        onClick={() => onSelect(project)}
+        className='flex flex-1 flex-col text-left'
+        aria-label={`View case study for ${project.title}`}
       >
-        <h3 className='text-lg font-semibold text-white drop-shadow-xl'>
-          {title}
-        </h3>
-        <p className='text-sm text-accent mt-2 font-medium drop-shadow-xl'>
-          {tech}
-        </p>
-      </div>
+        <div className='relative overflow-hidden border-b border-line'>
+          {project.image ? (
+            <Image
+              src={project.image}
+              alt={`${project.title} project preview`}
+              className='aspect-[16/10] w-full object-cover transition duration-500 ease-premium group-hover:scale-[1.03]'
+            />
+          ) : (
+            <div className='relative flex aspect-[16/10] items-end overflow-hidden bg-canvas-warm p-6'>
+              <div className='pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(6,95,70,0.12),transparent_55%)]' />
+              <div className='pointer-events-none absolute inset-6 border border-dashed border-line' />
+              <span className='relative text-2xl font-semibold tracking-tight text-ink'>
+                {project.shortName || project.title}
+              </span>
+            </div>
+          )}
+        </div>
 
-      {/* MOBILE: Always-visible glass blur background */}
-      <div
-        className='absolute bottom-0 left-0 right-0 md:hidden
-  p-4 backdrop-blur-lg bg-black/60
-  flex flex-col items-start justify-end'
-      >
-        <h3 className='text-base font-semibold text-white drop-shadow-xl'>
-          {title}
-        </h3>
-        <p className='text-xs text-accent mt-1 font-medium drop-shadow-xl'>
-          {tech}
-        </p>
-      </div>
-    </motion.a>
+        <div className='flex flex-1 flex-col p-5 sm:p-6'>
+          <p className='label'>{project.categoryLabel}</p>
+
+          <h3 className='mt-3 text-xl font-semibold tracking-tight text-ink transition duration-300 group-hover:translate-x-0.5'>
+            {project.title}
+          </h3>
+
+          <div className='accent-rule mt-3' />
+
+          <p className='mt-4 line-clamp-2 text-sm leading-6 text-muted'>
+            {project.description}
+          </p>
+
+          <p className='mt-4 text-sm text-ink'>
+            <span className='text-muted'>Role · </span>
+            {project.role}
+          </p>
+
+          {project.technologies?.length ? (
+            <p className='tech-inline mt-3'>{techSummary(project.technologies)}</p>
+          ) : null}
+
+          <span className='project-arrow mt-auto pt-6 inline-flex items-center gap-2 whitespace-nowrap'>
+            <span>View Case Study</span>
+            <FiArrowRight className='shrink-0 text-sm' />
+          </span>
+        </div>
+      </button>
+
+      {project.liveUrl ? (
+        <div className='border-t border-line px-5 py-4 sm:px-6'>
+          <a
+            href={project.liveUrl}
+            target='_blank'
+            rel='noreferrer'
+            className='button-ghost inline-flex items-center gap-1.5 whitespace-nowrap !text-sm'
+          >
+            <span>Live Project</span>
+            <FiExternalLink className='shrink-0 text-xs' />
+          </a>
+        </div>
+      ) : null}
+    </article>
   )
 }

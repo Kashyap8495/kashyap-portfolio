@@ -1,87 +1,124 @@
 'use client'
-import Link from 'next/link'
-import { useState } from 'react'
-import { FaBolt } from 'react-icons/fa'
-import { FiMenu, FiX } from 'react-icons/fi'
+
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { FiArrowRight, FiMenu, FiX } from 'react-icons/fi'
+
+const links = [
+  ['Home', '#home'],
+  ['Work', '#work'],
+  ['Services', '#services'],
+  ['About', '#about'],
+  ['Experience', '#experience'],
+  ['Contact', '#contact'],
+]
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const reduceMotion = useReducedMotion()
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [open])
 
   return (
-    <nav className='fixed w-full z-40 backdrop-blur-md bg-black/30'>
-      <div className='max-w-7xl mx-auto px-6 py-4 flex items-center justify-between'>
-        <Link
+    <header
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 flex items-center ${
+        scrolled || open
+          ? 'border-b border-stone-200/90 bg-[#F9F7F2]/90 shadow-xs backdrop-blur-xl h-20 sm:h-24'
+          : 'border-b border-transparent bg-transparent h-24 sm:h-28'
+      }`}
+    >
+      <div className='mx-auto flex w-full max-w-7xl items-center justify-between px-5 sm:px-6'>
+        {/* Logo */}
+        <a
           href='#home'
-          className='flex items-center gap-2.5 font-extrabold text-2xl tracking-wide cursor-pointer group'
+          className='group flex items-center gap-2 text-xl sm:text-2xl font-bold tracking-tight text-stone-900'
         >
-          <span
-            className='w-3 h-3 rounded-full bg-gradient-to-br from-[#9b5cff] to-[#4ba3ff]
-                  shadow-[0_0_12px_rgba(155,92,255,0.8)] group-hover:scale-125 transition-transform'
-          />
+          <span>Kashyap</span>
+          <span className='h-2.5 w-2.5 rounded-full bg-[#065F46] group-hover:scale-125 transition-transform' />
+        </a>
 
-          <span
-            className='bg-gradient-to-r from-[#9b5cff] to-[#4ba3ff] bg-clip-text text-transparent
-                  drop-shadow-md group-hover:tracking-widest transition-all duration-300'
+        {/* Desktop Links */}
+        <nav className='hidden md:flex items-center gap-1.5 rounded-full border border-stone-200/90 bg-white/90 px-5 py-2 shadow-xs backdrop-blur-md'>
+          {links.map(([label, href]) => (
+            <a
+              key={label}
+              href={href}
+              className='px-3.5 py-1.5 text-xs sm:text-[0.82rem] font-mono font-medium text-stone-600 transition-colors hover:text-[#065F46]'
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+
+        {/* Right CTA */}
+        <div className='hidden md:flex items-center gap-4'>
+          <a
+            href='#contact'
+            className='inline-flex items-center gap-2 rounded-lg bg-[#065F46] px-5 py-2.5 text-xs sm:text-sm font-mono font-semibold uppercase tracking-wider text-white transition-all duration-300 hover:bg-[#044e39] hover:shadow-md hover:shadow-[#065F46]/20 active:translate-y-0.5'
           >
-            Kashyap
-          </span>
-        </Link>
-
-        {/* Desktop Menu */}
-        <div className='hidden md:flex gap-6 items-center text-sm'>
-          <a href='#home' className='hover:text-accent transition'>
-            Home
-          </a>
-          <a href='#services' className='hover:text-accent transition'>
-            Services
-          </a>
-          <a href='#skills' className='hover:text-accent transition'>
-            Skills
-          </a>
-          <a href='#resume' className='hover:text-accent transition'>
-            Resume
-          </a>
-          <a href='#technology' className='hover:text-accent transition'>
-            Technology
-          </a>
-          <a href='#work' className='hover:text-accent transition'>
-            Work
-          </a>
-          <a href='#contact' className='hover:text-accent transition'>
-            Contact
+            <span>Let&apos;s Talk</span>
+            <FiArrowRight className='text-sm' />
           </a>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Hamburger Toggle */}
         <button
-          className='md:hidden'
-          onClick={() => setOpen(!open)}
-          aria-label='menu'
+          type='button'
+          className='flex h-11 w-11 items-center justify-center rounded-lg border border-stone-200 bg-white text-stone-800 md:hidden shadow-xs'
+          onClick={() => setOpen((prev) => !prev)}
+          aria-expanded={open}
+          aria-label={open ? 'Close navigation' : 'Open navigation'}
         >
-          {open ? <FiX /> : <FiMenu />}
+          {open ? <FiX className='text-xl' /> : <FiMenu className='text-xl' />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      {open && (
-        <div className='md:hidden px-6 pb-6 space-y-3 text-sm'>
-          <a href='#services' className='block'>
-            Services
-          </a>
-          <a href='#skills' className='block'>
-            Skills
-          </a>
-          <a href='#technology' className='block'>
-            Technology
-          </a>
-          <a href='#work' className='block'>
-            Work
-          </a>
-          <a href='#contact' className='block'>
-            Contact
-          </a>
-        </div>
-      )}
-    </nav>
+      {/* Mobile Drawer */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={reduceMotion ? false : { opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={reduceMotion ? undefined : { opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: 'easeInOut' }}
+            className='border-b border-stone-200 bg-[#F9F7F2]/98 backdrop-blur-2xl md:hidden overflow-hidden'
+          >
+            <div className='flex flex-col gap-2 px-6 py-6'>
+              {links.map(([label, href]) => (
+                <a
+                  key={label}
+                  href={href}
+                  onClick={() => setOpen(false)}
+                  className='border-b border-stone-200/60 py-3 text-base font-mono font-medium text-stone-700 transition-colors hover:text-[#065F46]'
+                >
+                  {label}
+                </a>
+              ))}
+              <a
+                href='#contact'
+                onClick={() => setOpen(false)}
+                className='mt-4 inline-flex items-center justify-center gap-2 rounded-lg bg-[#065F46] px-4 py-3 text-xs font-mono font-semibold uppercase tracking-wider text-white shadow-sm hover:bg-[#044e39]'
+              >
+                <span>Let&apos;s Talk</span>
+                <FiArrowRight />
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   )
 }

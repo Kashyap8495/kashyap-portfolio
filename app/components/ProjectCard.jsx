@@ -19,7 +19,10 @@ export default function ProjectCard({ project, onSelect }) {
             <Image
               src={project.image}
               alt={`${project.title} project preview`}
-              className='aspect-[16/10] w-full object-cover transition duration-500 ease-premium group-hover:scale-[1.03]'
+              width={1600}
+              height={1000}
+              sizes='(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw'
+              className='aspect-[16/10] w-full object-cover transition duration-500 ease-premium group-hover:scale-[1.02]'
             />
           ) : (
             <div className='relative flex aspect-[16/10] items-end overflow-hidden bg-canvas-warm p-6'>
@@ -54,20 +57,22 @@ export default function ProjectCard({ project, onSelect }) {
             <p className='tech-inline mt-3'>{techSummary(project.technologies)}</p>
           ) : null}
 
-          <span className='project-arrow mt-auto pt-6 inline-flex items-center gap-2 whitespace-nowrap'>
-            <span>View Case Study</span>
-            <FiArrowRight className='shrink-0 text-sm' />
-          </span>
+          <div className='mt-auto pt-6'>
+            <span className='inline-flex items-center gap-2 rounded-lg bg-[#065F46]/10 px-3.5 py-2 text-xs font-semibold text-[#065F46] transition-all duration-200 group-hover:bg-[#065F46] group-hover:text-white'>
+              <span>View Case Study</span>
+              <FiArrowRight className='shrink-0 text-xs transition-transform duration-200 group-hover:translate-x-0.5' />
+            </span>
+          </div>
         </div>
       </button>
 
       {project.liveUrl ? (
-        <div className='border-t border-line px-5 py-4 sm:px-6'>
+        <div className='border-t border-line px-5 py-3.5 sm:px-6 bg-stone-50/50'>
           <a
             href={project.liveUrl}
             target='_blank'
             rel='noreferrer'
-            className='button-ghost inline-flex items-center gap-1.5 whitespace-nowrap !text-sm'
+            className='inline-flex items-center justify-center gap-1.5 w-full rounded-md border border-stone-200 bg-white px-3 py-2 text-xs font-medium text-stone-700 shadow-xs transition-all duration-200 hover:border-[#065F46]/40 hover:bg-stone-50 hover:text-[#065F46] hover:shadow-xs'
           >
             <span>Live Project</span>
             <FiExternalLink className='shrink-0 text-xs' />

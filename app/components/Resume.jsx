@@ -78,12 +78,12 @@ export default function Resume() {
             <div className='group relative rounded-2xl border border-stone-200/90 bg-white/90 p-6 sm:p-8 backdrop-blur-sm shadow-sm transition-all duration-300 hover:border-[#065F46]/40 hover:bg-white'>
               <div className='flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-stone-200/80'>
                 <div>
-                  <div className='flex items-center gap-3'>
+                  <div className='flex flex-wrap items-center gap-2 sm:gap-3'>
                     <h3 className='text-xl sm:text-2xl font-bold text-stone-900 group-hover:text-[#065F46] transition-colors'>
                       {role.title}
                     </h3>
                     {role.current && (
-                      <span className='inline-flex items-center gap-1.5 rounded-full border border-[#065F46]/30 bg-[#065F46]/10 px-2.5 py-0.5 text-[0.68rem] font-mono font-medium text-[#065F46]'>
+                      <span className='inline-flex items-center gap-1.5 rounded-full border border-[#065F46]/30 bg-[#065F46]/10 px-2.5 py-0.5 text-[0.68rem] font-mono font-medium text-[#065F46] whitespace-nowrap shrink-0'>
                         <span className='h-1.5 w-1.5 rounded-full bg-[#065F46] animate-pulse' />
                         CURRENT ROLE
                       </span>
@@ -102,7 +102,7 @@ export default function Resume() {
                   </div>
                 </div>
 
-                <div className='flex items-center gap-1.5 rounded-lg border border-stone-200 bg-stone-50 px-3 py-1.5 text-xs font-mono text-stone-600'>
+                <div className='flex items-center gap-1.5 rounded-lg border border-stone-200 bg-stone-50 px-3 py-1.5 text-xs font-mono text-stone-600 w-fit'>
                   <FiCalendar className='text-[#065F46]' />
                   <span>{role.period}</span>
                 </div>

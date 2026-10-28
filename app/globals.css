@@ -143,18 +143,24 @@ body {
   align-items: center !important;
   gap: 0.5rem !important;
   white-space: nowrap !important;
-  font-family: var(--font-mono), monospace !important;
-  font-size: 0.85rem !important;
+  font-family: inherit !important;
+  font-size: 0.82rem !important;
   font-weight: 600 !important;
-  color: var(--accent) !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
+  color: #FFFFFF !important;
+  background: var(--accent) !important;
+  padding: 0.55rem 1.15rem !important;
+  border-radius: 0.5rem !important;
+  text-transform: none !important;
+  letter-spacing: 0.01em !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
   transition: all 0.2s ease !important;
 }
 
 .project-arrow:hover {
-  color: #044e39 !important;
-  transform: translateX(2px);
+  background: #044e39 !important;
+  color: #FFFFFF !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(6, 95, 70, 0.2) !important;
 }
 
 .button-ghost {
@@ -162,17 +168,25 @@ body {
   align-items: center !important;
   gap: 0.45rem !important;
   white-space: nowrap !important;
-  font-family: var(--font-mono), monospace !important;
+  font-family: inherit !important;
   font-size: 0.82rem !important;
   font-weight: 500 !important;
-  color: var(--muted) !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
+  color: var(--ink) !important;
+  background: #FFFFFF !important;
+  border: 1px solid var(--line) !important;
+  padding: 0.55rem 1.15rem !important;
+  border-radius: 0.5rem !important;
+  text-transform: none !important;
+  letter-spacing: 0.01em !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03) !important;
   transition: all 0.2s ease !important;
 }
 
 .button-ghost:hover {
+  border-color: rgba(6, 95, 70, 0.35) !important;
+  background: #FCFBF8 !important;
   color: var(--accent) !important;
+  transform: translateY(-1px) !important;
 }
 
 /* Projects Showcase */

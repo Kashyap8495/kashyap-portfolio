@@ -131,10 +131,13 @@ function ProjectDetail({ project, onClose }) {
                 <Image
                   src={project.image}
                   alt={`${project.title} preview`}
-                  className='aspect-[4/3] w-full rounded-md border border-line object-cover'
+                  width={1600}
+                  height={1000}
+                  sizes='(min-width: 1024px) 40vw, 90vw'
+                  className='aspect-[16/10] w-full rounded-md border border-line object-cover'
                 />
               ) : (
-                <div className='relative flex aspect-[4/3] items-end overflow-hidden rounded-md border border-line bg-canvas-warm p-6'>
+                <div className='relative flex aspect-[16/10] items-end overflow-hidden rounded-md border border-line bg-canvas-warm p-6'>
                   <div className='pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(6,95,70,0.14),transparent_55%)]' />
                   <span className='relative text-3xl font-semibold tracking-tight text-ink'>
                     {project.shortName || project.title}

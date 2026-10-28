@@ -82,13 +82,6 @@ export default function Hero() {
             </span>
             <span>AVAILABLE FOR FULL-TIME ROLES &amp; PROJECTS</span>
           </div>
-
-          <div className='hidden sm:inline-flex items-center gap-1.5 text-xs font-mono text-stone-500'>
-            <span className='text-stone-300'>//</span>
-            <span>Senior Full-Stack Engineer</span>
-            <span className='text-stone-300'>·</span>
-            <span>Surat, India</span>
-          </div>
         </motion.div>
 
         {/* Main 2-Column Hero Stage */}
@@ -136,70 +129,54 @@ export default function Hero() {
             </div>
 
             {/* Action Buttons */}
-            <div className='mt-8 flex flex-wrap items-center gap-4'>
+            <div className='mt-8 flex flex-wrap items-center gap-3 sm:gap-4'>
               <a
                 href='#work'
-                className='group relative inline-flex items-center justify-center gap-2.5 rounded-lg bg-[#065F46] px-6 py-3.5 text-xs sm:text-sm font-mono font-semibold uppercase tracking-wider text-white transition-all duration-300 hover:bg-[#044e39] hover:shadow-md hover:shadow-[#065F46]/20 active:translate-y-0.5'
+                className='group relative inline-flex items-center justify-center gap-2 rounded-lg bg-[#065F46] px-5 sm:px-6 py-3 sm:py-3.5 text-xs sm:text-sm font-mono font-semibold uppercase tracking-wider text-white transition-all duration-300 hover:bg-[#044e39] hover:shadow-md hover:shadow-[#065F46]/20 active:translate-y-0.5'
               >
                 <span>Explore Featured Work</span>
-                <FiArrowRight className='text-base transition-transform duration-300 group-hover:translate-x-1' />
+                <FiArrowRight className='text-sm sm:text-base transition-transform duration-300 group-hover:translate-x-1' />
               </a>
 
               <a
                 href='#contact'
-                className='inline-flex items-center justify-center gap-2 rounded-lg border border-stone-300 bg-white px-5 py-3.5 text-xs sm:text-sm font-mono font-medium uppercase tracking-wider text-stone-800 shadow-xs transition-all duration-300 hover:border-[#065F46] hover:text-[#065F46]'
+                className='inline-flex items-center justify-center gap-2 rounded-lg border border-stone-300 bg-white px-4 sm:px-5 py-3 sm:py-3.5 text-xs sm:text-sm font-mono font-medium uppercase tracking-wider text-stone-800 shadow-xs transition-all duration-300 hover:border-[#065F46] hover:text-[#065F46]'
               >
                 <span>Let&apos;s Connect</span>
               </a>
-
-              {/* One-Click Copy Email Button */}
-              <button
-                type='button'
-                onClick={copyEmail}
-                className='group inline-flex items-center gap-2 rounded-lg border border-stone-200 bg-white/90 px-4 py-3.5 text-xs font-mono text-stone-600 shadow-xs transition-all duration-300 hover:border-stone-400 hover:text-stone-900'
-                title='Copy email address'
-              >
-                {copied ? (
-                  <>
-                    <FiCheck className='text-[#065F46] text-sm' />
-                    <span className='text-[#065F46] font-medium'>Email Copied!</span>
-                  </>
-                ) : (
-                  <>
-                    <FiCopy className='text-stone-400 group-hover:text-stone-700 transition-colors' />
-                    <span className='hidden sm:inline'>Copy Email</span>
-                  </>
-                )}
-              </button>
             </div>
 
             {/* Social quick links */}
-            <div className='mt-8 flex items-center gap-4 text-xs font-mono text-stone-500'>
-              <span className='text-stone-400'>Direct channels:</span>
-              <a
-                href='https://github.com/Kashyap8495'
-                target='_blank'
-                rel='noreferrer'
-                className='inline-flex items-center gap-1.5 text-stone-600 hover:text-[#065F46] transition-colors'
-              >
-                <FiGithub /> GitHub
-              </a>
-              <span className='text-stone-300'>·</span>
-              <a
-                href='https://www.linkedin.com/in/kashyapgeek9012'
-                target='_blank'
-                rel='noreferrer'
-                className='inline-flex items-center gap-1.5 text-stone-600 hover:text-[#065F46] transition-colors'
-              >
-                <FiLinkedin /> LinkedIn
-              </a>
-              <span className='text-stone-300'>·</span>
-              <a
-                href='mailto:patelkashyap134@gmail.com'
-                className='inline-flex items-center gap-1.5 text-stone-600 hover:text-[#065F46] transition-colors'
-              >
-                <FiMail /> patelkashyap134@gmail.com
-              </a>
+            <div className='mt-8 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs font-mono text-stone-500'>
+              <span className='text-stone-400 shrink-0'>Direct channels:</span>
+              <div className='flex flex-wrap items-center gap-x-3 gap-y-1.5'>
+                <a
+                  href='https://github.com/Kashyap8495'
+                  target='_blank'
+                  rel='noreferrer'
+                  className='inline-flex items-center gap-1.5 text-stone-600 hover:text-[#065F46] transition-colors'
+                >
+                  <FiGithub /> GitHub
+                </a>
+                <span className='text-stone-300'>·</span>
+                <a
+                  href='https://www.linkedin.com/in/kashyapgeek9012'
+                  target='_blank'
+                  rel='noreferrer'
+                  className='inline-flex items-center gap-1.5 text-stone-600 hover:text-[#065F46] transition-colors'
+                >
+                  <FiLinkedin /> LinkedIn
+                </a>
+                <span className='text-stone-300'>·</span>
+                <a
+                  href='mailto:patelkashyap134@gmail.com'
+                  className='inline-flex items-center gap-1.5 text-stone-600 hover:text-[#065F46] transition-colors'
+                  title='patelkashyap134@gmail.com'
+                >
+                  <FiMail className='shrink-0' />
+                  <span>Email</span>
+                </a>
+              </div>
             </div>
           </motion.div>
 
@@ -215,68 +192,68 @@ export default function Hero() {
 
             <div className='relative overflow-hidden rounded-xl border border-stone-800 bg-[#12161A] text-zinc-100 shadow-2xl shadow-stone-900/15 backdrop-blur-xl'>
               {/* Window Header Bar */}
-              <div className='flex items-center justify-between border-b border-white/10 bg-white/[0.04] px-4 py-3'>
-                <div className='flex items-center gap-2'>
-                  <span className='h-3 w-3 rounded-full bg-rose-500/80' />
-                  <span className='h-3 w-3 rounded-full bg-amber-500/80' />
-                  <span className='h-3 w-3 rounded-full bg-emerald-500/80' />
-                  <span className='ml-2 text-xs font-mono text-zinc-400'>
+              <div className='flex items-center justify-between border-b border-white/10 bg-white/[0.04] px-3 sm:px-4 py-2.5 sm:py-3'>
+                <div className='flex items-center gap-1.5 sm:gap-2 min-w-0'>
+                  <span className='h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-rose-500/80 shrink-0' />
+                  <span className='h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-amber-500/80 shrink-0' />
+                  <span className='h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-emerald-500/80 shrink-0' />
+                  <span className='ml-1 text-[0.7rem] sm:text-xs font-mono text-zinc-400 truncate'>
                     kashyap-system-core.tsx
                   </span>
                 </div>
 
-                <div className='flex items-center gap-2 text-xs font-mono text-emerald-400'>
-                  <span className='h-2 w-2 rounded-full bg-emerald-400 animate-pulse' />
+                <div className='flex items-center gap-1.5 text-[0.7rem] sm:text-xs font-mono text-emerald-400 shrink-0 ml-2'>
+                  <span className='h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse' />
                   <span>99.98% Healthy</span>
                 </div>
               </div>
 
               {/* Console Tabs */}
-              <div className='flex border-b border-white/10 bg-zinc-900/50 text-xs font-mono'>
+              <div className='flex border-b border-white/10 bg-zinc-900/50 text-[0.75rem] sm:text-xs font-mono overflow-x-auto scrollbar-none'>
                 <button
                   id='tab-architecture'
                   type='button'
                   onClick={() => setActiveTab('visual')}
-                  className={`flex items-center gap-1.5 px-4 py-2.5 border-r border-white/10 cursor-pointer transition-colors ${
+                  className={`flex items-center gap-1.5 px-3 sm:px-4 py-2 sm:py-2.5 border-r border-white/10 cursor-pointer transition-colors whitespace-nowrap shrink-0 ${
                     activeTab === 'visual'
                       ? 'bg-white/[0.08] text-white border-b-2 border-b-emerald-400'
                       : 'text-zinc-400 hover:text-white'
                   }`}
                 >
-                  <FiLayers className='text-emerald-400' />
+                  <FiLayers className='text-emerald-400 text-sm' />
                   <span>Architecture</span>
                 </button>
                 <button
                   id='tab-api-logic'
                   type='button'
                   onClick={() => setActiveTab('code')}
-                  className={`flex items-center gap-1.5 px-4 py-2.5 border-r border-white/10 cursor-pointer transition-colors ${
+                  className={`flex items-center gap-1.5 px-3 sm:px-4 py-2 sm:py-2.5 border-r border-white/10 cursor-pointer transition-colors whitespace-nowrap shrink-0 ${
                     activeTab === 'code'
                       ? 'bg-white/[0.08] text-white border-b-2 border-b-emerald-400'
                       : 'text-zinc-400 hover:text-white'
                   }`}
                 >
-                  <FiCode className='text-cyan-400' />
+                  <FiCode className='text-cyan-400 text-sm' />
                   <span>API Logic</span>
                 </button>
                 <button
                   id='tab-telemetry'
                   type='button'
                   onClick={() => setActiveTab('metrics')}
-                  className={`flex items-center gap-1.5 px-4 py-2.5 cursor-pointer transition-colors ${
+                  className={`flex items-center gap-1.5 px-3 sm:px-4 py-2 sm:py-2.5 cursor-pointer transition-colors whitespace-nowrap shrink-0 ${
                     activeTab === 'metrics'
                       ? 'bg-white/[0.08] text-white border-b-2 border-b-emerald-400'
                       : 'text-zinc-400 hover:text-white'
                   }`}
                 >
-                  <FiActivity className='text-amber-400' />
+                  <FiActivity className='text-amber-400 text-sm' />
                   <span>Telemetry</span>
                 </button>
               </div>
 
               {/* Tab 1: 3D Visual Architecture */}
               {activeTab === 'visual' && (
-                <div className='relative h-[340px] sm:h-[380px] w-full overflow-hidden bg-black/60'>
+                <div className='relative h-[320px] sm:h-[380px] w-full overflow-hidden bg-black/60'>
                   <Image
                     src={heroVisual}
                     alt='Modern software architecture visualization'
@@ -287,33 +264,33 @@ export default function Hero() {
                   <div className='absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent' />
 
                   {/* Floating Signal Badges over Artwork */}
-                  <div className='absolute top-4 left-4'>
-                    <div className='inline-flex items-center gap-1.5 rounded-lg border border-white/15 bg-black/70 px-3 py-1.5 text-[0.72rem] font-mono text-zinc-200 backdrop-blur-md shadow-lg'>
+                  <div className='absolute top-3 left-3 sm:top-4 sm:left-4'>
+                    <div className='inline-flex items-center gap-1.5 rounded-lg border border-white/15 bg-black/70 px-2.5 py-1 sm:px-3 sm:py-1.5 text-[0.68rem] sm:text-[0.72rem] font-mono text-zinc-200 backdrop-blur-md shadow-lg'>
                       <FiCpu className='text-emerald-400' />
                       <span>Microservices &amp; APIs</span>
                     </div>
                   </div>
 
-                  <div className='absolute bottom-16 right-4'>
-                    <div className='inline-flex items-center gap-1.5 rounded-lg border border-emerald-500/40 bg-emerald-950/80 px-3 py-1.5 text-[0.72rem] font-mono text-emerald-300 backdrop-blur-md shadow-lg'>
+                  <div className='absolute bottom-14 right-3 sm:bottom-16 sm:right-4'>
+                    <div className='inline-flex items-center gap-1.5 rounded-lg border border-emerald-500/40 bg-emerald-950/80 px-2.5 py-1 sm:px-3 sm:py-1.5 text-[0.68rem] sm:text-[0.72rem] font-mono text-emerald-300 backdrop-blur-md shadow-lg'>
                       <FiZap className='text-emerald-400' />
                       <span>Edge Performance</span>
                     </div>
                   </div>
 
                   {/* Architecture Bottom Legend */}
-                  <div className='absolute bottom-0 inset-x-0 border-t border-white/10 bg-zinc-950/90 p-3.5 backdrop-blur-md flex items-center justify-between text-xs font-mono text-zinc-400'>
-                    <div className='flex items-center gap-2'>
-                      <span className='h-2 w-2 rounded-full bg-cyan-400' />
-                      <span className='text-zinc-300'>Client UI</span>
-                      <span className='text-zinc-600'>→</span>
-                      <span className='h-2 w-2 rounded-full bg-emerald-400' />
-                      <span className='text-zinc-300'>API Gateway</span>
-                      <span className='text-zinc-600'>→</span>
-                      <span className='h-2 w-2 rounded-full bg-purple-400' />
-                      <span className='text-zinc-300'>PostgreSQL</span>
+                  <div className='absolute bottom-0 inset-x-0 border-t border-white/10 bg-zinc-950/90 px-3 py-2 sm:p-3.5 backdrop-blur-md flex items-center justify-between text-[0.7rem] sm:text-xs font-mono text-zinc-400'>
+                    <div className='flex items-center gap-1.5 sm:gap-2 min-w-0'>
+                      <span className='h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-cyan-400 shrink-0' />
+                      <span className='text-zinc-300 text-[0.66rem] sm:text-xs whitespace-nowrap'>Client UI</span>
+                      <span className='text-zinc-600 text-[0.62rem] sm:text-xs'>→</span>
+                      <span className='h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-emerald-400 shrink-0' />
+                      <span className='text-zinc-300 text-[0.66rem] sm:text-xs whitespace-nowrap'>API Gateway</span>
+                      <span className='text-zinc-600 text-[0.62rem] sm:text-xs'>→</span>
+                      <span className='h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-purple-400 shrink-0' />
+                      <span className='text-zinc-300 text-[0.66rem] sm:text-xs whitespace-nowrap'>PostgreSQL</span>
                     </div>
-                    <span className='text-emerald-400 text-[0.68rem]'>LIVE</span>
+                    <span className='text-emerald-400 text-[0.65rem] sm:text-[0.68rem] font-semibold shrink-0 ml-2'>LIVE</span>
                   </div>
                 </div>
               )}

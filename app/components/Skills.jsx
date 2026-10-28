@@ -101,20 +101,20 @@ export default function Skills() {
                 <span className='text-xs font-mono text-stone-500'>{category.skills.length} core skills</span>
               </h3>
 
-              <div className='mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3'>
+              <div className='mt-6 flex flex-wrap gap-2 sm:gap-2.5'>
                 {category.skills.map((skill) => {
                   const Icon = skill.icon
                   return (
                     <div
                       key={skill.name}
-                      className='group flex items-center gap-3 rounded-xl border border-stone-200/80 bg-stone-50/70 p-3 sm:px-3.5 transition-all duration-200 hover:border-[#065F46]/40 hover:bg-white hover:shadow-xs'
+                      className='group inline-flex items-center gap-2 sm:gap-2.5 rounded-xl border border-stone-200/80 bg-stone-50/70 px-3 py-2 sm:px-3.5 sm:py-2.5 transition-all duration-200 hover:border-[#065F46]/40 hover:bg-white hover:shadow-xs'
                     >
                       {Icon ? (
-                        <Icon className={`text-xl shrink-0 ${skill.color} transition-transform group-hover:scale-110`} />
+                        <Icon className={`text-lg sm:text-xl shrink-0 ${skill.color} transition-transform group-hover:scale-110`} />
                       ) : (
-                        <span className='h-2.5 w-2.5 rounded-full bg-[#065F46] shrink-0' />
+                        <span className='h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-[#065F46] shrink-0' />
                       )}
-                      <span className='text-[0.9rem] font-mono font-medium text-stone-700 group-hover:text-stone-900 transition-colors truncate'>
+                      <span className='text-xs sm:text-[0.88rem] font-mono font-medium text-stone-700 group-hover:text-stone-900 transition-colors whitespace-nowrap'>
                         {skill.name}
                       </span>
                     </div>

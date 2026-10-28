@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { FiArrowUpRight, FiCheck, FiCopy, FiMail, FiMapPin, FiSend } from 'react-icons/fi'
+import { FiArrowUpRight, FiMail, FiSend } from 'react-icons/fi'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import Reveal from './ui/Reveal'
 
@@ -33,20 +33,6 @@ export default function Contact() {
   const [loading, setLoading] = useState(false)
   const [status, setStatus] = useState('')
   const [isValid, setIsValid] = useState(false)
-  const [copied, setCopied] = useState(false)
-
-  useEffect(() => {
-    const { name, email, message } = form
-    setIsValid(
-      name.trim() !== '' && message.trim() !== '' && emailRegex.test(email.trim())
-    )
-  }, [form])
-
-  const copyEmail = () => {
-    navigator.clipboard.writeText('patelkashyap134@gmail.com')
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2400)
-  }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -114,47 +100,23 @@ export default function Contact() {
                       href={ch.href}
                       target={ch.href.startsWith('http') ? '_blank' : undefined}
                       rel={ch.href.startsWith('http') ? 'noreferrer' : undefined}
-                      className='group flex items-center justify-between rounded-xl border border-stone-200/80 bg-stone-50/70 p-4 transition-all duration-200 hover:border-[#065F46]/40 hover:bg-white hover:shadow-xs'
+                      className='group flex items-center justify-between gap-3 rounded-xl border border-stone-200/80 bg-stone-50/70 p-3.5 sm:p-4 transition-all duration-200 hover:border-[#065F46]/40 hover:bg-white hover:shadow-xs'
                     >
-                      <div className='flex items-center gap-3'>
-                        <span className='flex h-10 w-10 items-center justify-center rounded-lg border border-stone-200 bg-white text-stone-700 text-lg group-hover:text-[#065F46] group-hover:border-[#065F46]/40 transition-colors'>
+                      <div className='flex items-center gap-3 min-w-0 flex-1'>
+                        <span className='flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-stone-200 bg-white text-stone-700 text-lg group-hover:text-[#065F46] group-hover:border-[#065F46]/40 transition-colors'>
                           <Icon />
                         </span>
-                        <div>
+                        <div className='min-w-0 flex-1'>
                           <div className='text-xs font-mono text-stone-500'>{ch.label}</div>
-                          <div className='text-sm font-medium text-stone-900 group-hover:text-[#065F46] transition-colors'>
+                          <div className='text-xs sm:text-sm font-medium text-stone-900 group-hover:text-[#065F46] transition-colors truncate'>
                             {ch.value}
                           </div>
                         </div>
                       </div>
-                      <FiArrowUpRight className='text-stone-400 group-hover:text-[#065F46] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5' />
+                      <FiArrowUpRight className='text-stone-400 group-hover:text-[#065F46] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0 text-base' />
                     </a>
                   )
                 })}
-              </div>
-
-              {/* Fast Copy Button */}
-              <div className='mt-6 pt-6 border-t border-stone-200/80 flex items-center justify-between'>
-                <div className='flex items-center gap-2 text-xs font-mono text-stone-600'>
-                  <FiMapPin className='text-[#065F46]' />
-                  <span>Surat, India · IST (UTC +5:30)</span>
-                </div>
-
-                <button
-                  type='button'
-                  onClick={copyEmail}
-                  className='inline-flex items-center gap-1.5 text-xs font-mono text-[#065F46] hover:text-[#044e39] font-medium transition-colors'
-                >
-                  {copied ? (
-                    <>
-                      <FiCheck /> Copied!
-                    </>
-                  ) : (
-                    <>
-                      <FiCopy /> Copy Email
-                    </>
-                  )}
-                </button>
               </div>
             </div>
           </Reveal>
